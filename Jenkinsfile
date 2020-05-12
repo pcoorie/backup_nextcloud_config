@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Starting backups....'
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'hub', transfers: [sshTransfer(excludes: '', execCommand: "mc mirror /var/www/hub.cloud.coorie.net/ ibm-cos-au/next-cloud-coorie-net/", execTimeout: 0, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'hub', transfers: [sshTransfer(excludes: '', execCommand: "mc mirror --overwrite /var/www/hub.cloud.coorie.net/ ibm-cos-au/next-cloud-coorie-net/", execTimeout: 0, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
             }
         }
     }
